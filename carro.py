@@ -46,3 +46,14 @@ class Carro(Resource):
         with open(filedb, 'w') as carrodbrw:
             json.dump(listaCarros, carrodbrw)
             return 'OK'
+
+    def delete(self, codigo):
+        with open(filedb) as carrpdb:
+            listaCarros = json.load(carrpdb)
+            for carro in listaCarros:
+                if carro['codigo'] == codigo:
+                    listaCarros.remove(carro)
+        with open(filedb, 'w') as carrodbrw:
+            json.dump(listaCarros, carrodbrw)
+            return 'OK'
+
